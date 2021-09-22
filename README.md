@@ -417,6 +417,11 @@ history; if you don't want that, remove the corresponding symbols from:
 
     let g:mwHistAdd = '/@'
 
+By default, searches with <Leader>\* and <Leader>/ doesn't change the behavior
+of the default n/N movement. To change the search register: 
+
+    let g:mwHistSearch = 1
+
 To enable the automatic restore of marks from a previous Vim session:
 
     let g:mwAutoLoadMarks = 1

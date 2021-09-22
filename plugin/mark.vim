@@ -29,6 +29,10 @@ if ! exists('g:mwHistAdd')
 	let g:mwHistAdd = '/@'
 endif
 
+if ! exists('g:mwHistSearch')
+	let g:mwHistSearch = 0
+endif
+
 if ! exists('g:mwAutoLoadMarks')
 	let g:mwAutoLoadMarks = 0
 endif

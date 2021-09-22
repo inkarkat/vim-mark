@@ -766,6 +766,9 @@ function! mark#SearchNext( isBackward, ... )
 	" Use the provided search type or choose depending on last use of
 	" <Plug>MarkSearchCurrentNext / <Plug>MarkSearchAnyNext.
 	call call(a:0 ? a:1 : (s:lastSearch == -1 ? 'mark#SearchAnyMark' : 'mark#SearchCurrentMark'), [a:isBackward])
+	if g:mwHistSearch && a:0 && a:1 == 'mark#SearchCurrentMark'
+		let @/=l:markText
+	endif
 	return 1
 endfunction
 
