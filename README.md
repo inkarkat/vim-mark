@@ -329,7 +329,7 @@ To uninstall, use the :RmVimball command.
 ### DEPENDENCIES
 
 - Requires Vim 7.1 with matchadd(), or Vim 7.2 or higher.
-- Requires the ingo-library.vim plugin ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)), version 1.043 or
+- Requires the ingo-library.vim plugin ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)), version 1.046 or
   higher.
 
 CONFIGURATION
@@ -600,7 +600,7 @@ https://github.com/inkarkat/vim-mark/issues or email (address below).
 HISTORY
 ------------------------------------------------------------------------------
 
-##### 3.3.0   RELEASEME
+##### 3.3.0   17-Jan-2025
 - Expose mark#mark#AnyMarkPattern().
 - Robustness: Place the ColorScheme initialization also in the
   MarkInitialization autocommand group.
@@ -949,7 +949,7 @@ __PLEASE UPDATE THE
 - Initial version published by Yuheng Xie on vim.org.
 
 ------------------------------------------------------------------------------
-Copyright: (C) 2008-2024 Ingo Karkat -
+Copyright: (C) 2008-2025 Ingo Karkat -
            (C) 2005-2008 Yuheng Xie -
 The [VIM LICENSE](http://vimdoc.sourceforge.net/htmldoc/uganda.html#license) applies to this plugin.
 
