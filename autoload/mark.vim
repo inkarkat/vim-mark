@@ -1,7 +1,7 @@
 " Script Name: mark.vim
 " Description: Highlight several words in different colors simultaneously.
 "
-" Copyright:   (C) 2008-2021 Ingo Karkat
+" Copyright:   (C) 2008-2024 Ingo Karkat
 "              (C) 2005-2008 Yuheng Xie
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
@@ -11,7 +11,15 @@
 "   - ingo-library.vim plugin
 "   - SearchSpecial.vim plugin (optional)
 "
-" Version:     3.1.1
+" Version:     3.2.1
+
+try
+	call ingo#version#Has('1.046')
+catch /^ingo-library:/
+	echoerr v:exception
+catch /^Vim\%((\a\+)\)\=:/
+	echoerr printf('The ingo-library dependency is missing; see :help %s-dependencies', expand('<sfile>:t:r'))
+endtry
 
 "- functions ------------------------------------------------------------------
 
@@ -53,7 +61,8 @@ function! s:IsIgnoreCase( expr )
 endfunction
 " Mark the current word, like the built-in star command.
 " If the cursor is on an existing mark, remove it.
-function! mark#MarkCurrentWord( groupNum )
+function! mark#MarkCurrentWord( groupNum, ... )
+	let l:markWholeWordOnly = (a:0 >= 1 ? a:1 : 1)
 	let l:regexp = (a:groupNum == 0 ? mark#CurrentMark()[0] : '')
 	if empty(l:regexp)
 		let l:cword = expand('<cword>')
@@ -61,7 +70,7 @@ function! mark#MarkCurrentWord( groupNum )
 			let l:regexp = s:EscapeText(l:cword)
 			" The star command only creates a \<whole word\> search pattern if the
 			" <cword> actually only consists of keyword characters.
-			if l:cword =~# '^\k\+$'
+			if l:cword =~# '^\k\+$' && l:markWholeWordOnly
 				let l:regexp = '\<' . l:regexp . '\>'
 			endif
 		endif
@@ -744,14 +753,14 @@ function! s:Search( pattern, count, isBackward, currentMarkPosition, searchType 
 endfunction
 
 " Combine all marks into one regexp.
-function! s:AnyMark()
+function! mark#AnyMarkPattern()
 	return join(filter(copy(s:pattern), '! empty(v:val)'), '\|')
 endfunction
 
 " Search any mark.
 function! mark#SearchAnyMark( isBackward )
 	let l:markPosition = mark#CurrentMark()[1]
-	let l:markText = s:AnyMark()
+	let l:markText = mark#AnyMarkPattern()
 	let s:lastSearch = -1
 	return s:Search(l:markText, v:count1, a:isBackward, l:markPosition, 'mark*')
 endfunction
