@@ -471,7 +471,8 @@ would like to change their relative priorities. The default is negative to
 step back behind the default search highlighting.
 
 If you want no or only a few of the available mappings, you can completely
-turn off the creation of the default mappings by defining:
+turn off the creation of the default mappings by defining (before the plugin
+is loaded):
 
     :let g:mw_no_mappings = 1
 
