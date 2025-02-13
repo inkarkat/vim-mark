@@ -471,7 +471,8 @@ step back behind the default search highlighting.
 
 							    *g:mw_no_mappings*
 If you want no or only a few of the available mappings, you can completely
-turn off the creation of the default mappings by defining: >
+turn off the creation of the default mappings by defining (before the plugin
+is loaded): >
     :let g:mw_no_mappings = 1
 This saves you from mapping dummy keys to all unwanted mapping targets.
 						  *mark-mappings* *mark-remap*
