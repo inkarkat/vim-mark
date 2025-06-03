@@ -11,10 +11,10 @@
 "   - ingo-library.vim plugin
 "   - SearchSpecial.vim plugin (optional)
 "
-" Version:     3.2.1
+" Version:     3.4.0
 
 try
-	call ingo#version#Has('1.046')
+	call ingo#version#Has('1.047')
 catch /^ingo-library:/
 	echoerr v:exception
 catch /^Vim\%((\a\+)\)\=:/
@@ -846,8 +846,9 @@ endfunction
 function! mark#MarksVariablesComplete( ArgLead, CmdLine, CursorPos )
 	return sort(map(filter(keys(g:), 'v:val !~# "^MARK_\\%(MARKS\\|ENABLED\\)$" && v:val =~# "\\V\\^MARK_' . (empty(a:ArgLead) ? '\\S' : escape(a:ArgLead, '\')) . '"'), 'v:val[5:]'))
 endfunction
+" Duplicated to +/function!\ s:GetMarksVariable/ ../plugin/mark.vim
 function! s:GetMarksVariable( ... )
-	return printf('MARK_%s', (a:0 ? a:1 : 'MARKS'))
+	return printf('MARK_%s', (a:0 ? a:1 : (ingo#plugin#persistence#CanPersist() == 2 ? 'marks': 'MARKS')))  " DWIM: Default to g:MARK_marks if only persistence for :mksession is configured
 endfunction
 
 " :MarkLoad command.
