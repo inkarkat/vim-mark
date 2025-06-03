@@ -875,13 +875,12 @@ function! mark#LoadCommand( isShowMessages, ... )
 		return 1
 	catch /^Load:/
 		if a:0
-			call ingo#err#Set(printf('Corrupted persistent mark info in %s', l:marksVariable))
-			execute 'unlet! g:' . l:marksVariable
+			call ingo#err#Set(printf('Corrupted persistent mark info in g:%s', l:marksVariable))
 		else
-			call ingo#err#Set('Corrupted persistent mark info in g:MARK_MARKS and g:MARK_ENABLED')
-			unlet! g:MARK_MARKS
+			call ingo#err#Set(printf('Corrupted persistent mark info in g:%s and g:MARK_ENABLED', l:marksVariable))
 			unlet! g:MARK_ENABLED
 		endif
+		execute 'unlet! g:' . l:marksVariable
 		return 0
 	endtry
 endfunction
