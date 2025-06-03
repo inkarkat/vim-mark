@@ -74,6 +74,8 @@ plugin offers the following advantages over the original:
 - vim-highlight-hero ([vimscript #5922](http://www.vim.org/scripts/script.php?script_id=5922)) can also highlight the current word or
   selection, has some flexibility with regard to whitespace matching, is
   limited to the current window.
+- high-str (https://github.com/Pocco81/high-str.nvim) is a Neovim-only plugin
+  that can highlight the visual selection in multiple, configurable colors.
 
 USAGE
 ------------------------------------------------------------------------------
