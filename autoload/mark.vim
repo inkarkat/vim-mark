@@ -1,7 +1,7 @@
 " Script Name: mark.vim
 " Description: Highlight several words in different colors simultaneously.
 "
-" Copyright:   (C) 2008-2024 Ingo Karkat
+" Copyright:   (C) 2008-2025 Ingo Karkat
 "              (C) 2005-2008 Yuheng Xie
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
@@ -11,10 +11,10 @@
 "   - ingo-library.vim plugin
 "   - SearchSpecial.vim plugin (optional)
 "
-" Version:     3.2.1
+" Version:     3.4.0
 
 try
-	call ingo#version#Has('1.046')
+	call ingo#version#Has('1.047')
 catch /^ingo-library:/
 	echoerr v:exception
 catch /^Vim\%((\a\+)\)\=:/
@@ -846,19 +846,15 @@ endfunction
 function! mark#MarksVariablesComplete( ArgLead, CmdLine, CursorPos )
 	return sort(map(filter(keys(g:), 'v:val !~# "^MARK_\\%(MARKS\\|ENABLED\\)$" && v:val =~# "\\V\\^MARK_' . (empty(a:ArgLead) ? '\\S' : escape(a:ArgLead, '\')) . '"'), 'v:val[5:]'))
 endfunction
-function! s:GetMarksVariable( ... )
-	return printf('MARK_%s', (a:0 ? a:1 : 'MARKS'))
-endfunction
 
 " :MarkLoad command.
-function! mark#LoadCommand( isShowMessages, ... )
+function! mark#LoadCommand( isShowMessages, marksVariable )
 	try
-		let l:marksVariable = call('s:GetMarksVariable', a:000)
-		let l:isEnabled = (a:0 ? exists('g:' . l:marksVariable) : (exists('g:MARK_ENABLED') ? g:MARK_ENABLED : 1))
+		let l:isEnabled = (a:0 ? exists('g:' . a:marksVariable) : (exists('g:MARK_ENABLED') ? g:MARK_ENABLED : 1))
 
-		let l:marks = ingo#plugin#persistence#Load(l:marksVariable, [])
+		let l:marks = ingo#plugin#persistence#Load(a:marksVariable, [])
 		if empty(l:marks)
-			call ingo#err#Set('No marks stored under ' . l:marksVariable . (ingo#plugin#persistence#CanPersist(l:marksVariable) ? '' : ", and persistence not configured via ! flag in 'viminfo'"))
+			call ingo#err#Set('No marks stored under ' . a:marksVariable . (ingo#plugin#persistence#CanPersist(a:marksVariable) ? '' : ', and persistence not configured; cp. :help mark-persistence'))
 			return 0
 		endif
 
@@ -866,7 +862,7 @@ function! mark#LoadCommand( isShowMessages, ... )
 
 		if a:isShowMessages
 			if l:loadedMarkNum == 0
-				echomsg 'No persistent marks defined in ' . l:marksVariable
+				echomsg 'No persistent marks defined in ' . a:marksVariable
 			else
 				echomsg printf('Loaded %d mark%s', l:loadedMarkNum, (l:loadedMarkNum == 1 ? '' : 's')) . (s:enabled ? '' : '; marks currently disabled')
 			endif
@@ -875,13 +871,12 @@ function! mark#LoadCommand( isShowMessages, ... )
 		return 1
 	catch /^Load:/
 		if a:0
-			call ingo#err#Set(printf('Corrupted persistent mark info in %s', l:marksVariable))
-			execute 'unlet! g:' . l:marksVariable
+			call ingo#err#Set(printf('Corrupted persistent mark info in g:%s', a:marksVariable))
 		else
-			call ingo#err#Set('Corrupted persistent mark info in g:MARK_MARKS and g:MARK_ENABLED')
-			unlet! g:MARK_MARKS
+			call ingo#err#Set(printf('Corrupted persistent mark info in g:%s and g:MARK_ENABLED', a:marksVariable))
 			unlet! g:MARK_ENABLED
 		endif
+		execute 'unlet! g:' . a:marksVariable
 		return 0
 	endtry
 endfunction
@@ -890,7 +885,7 @@ endfunction
 function! s:SavePattern( ... )
 	let l:savedMarks = mark#ToList()
 
-	let l:marksVariable = call('s:GetMarksVariable', a:000)
+	let l:marksVariable = call('mark#early#GetMarksVariable', a:000)
 	call ingo#plugin#persistence#Store(l:marksVariable, l:savedMarks)
 	if ! a:0
 		let g:MARK_ENABLED = s:enabled
@@ -901,10 +896,10 @@ endfunction
 function! mark#SaveCommand( ... )
 	if ! ingo#plugin#persistence#CanPersist()
 		if ! a:0
-			call ingo#err#Set("Cannot persist marks, need ! flag in 'viminfo': :set viminfo+=!")
+			call ingo#err#Set('Cannot persist marks; cp. :help mark-persistence')
 			return 0
 		elseif a:1 =~# '^\L\+$'
-			call ingo#msg#WarningMsg("Cannot persist marks, need ! flag in 'viminfo': :set viminfo+=!")
+			call ingo#msg#WarningMsg('Cannot persist marks; cp. :help mark-persistence')
 		endif
 	endif
 
@@ -1160,7 +1155,7 @@ endfunction
 call mark#Init()
 if exists('g:mwDoDeferredLoad') && g:mwDoDeferredLoad
 	unlet g:mwDoDeferredLoad
-	call mark#LoadCommand(0)
+	call mark#LoadCommand(0, mark#early#GetMarksVariable())
 else
 	call mark#UpdateScope()
 endif
