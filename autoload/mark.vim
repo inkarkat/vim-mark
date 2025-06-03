@@ -848,14 +848,13 @@ function! mark#MarksVariablesComplete( ArgLead, CmdLine, CursorPos )
 endfunction
 
 " :MarkLoad command.
-function! mark#LoadCommand( isShowMessages, ... )
+function! mark#LoadCommand( isShowMessages, marksVariable )
 	try
-		let l:marksVariable = call('mark#early#GetMarksVariable', a:000)
-		let l:isEnabled = (a:0 ? exists('g:' . l:marksVariable) : (exists('g:MARK_ENABLED') ? g:MARK_ENABLED : 1))
+		let l:isEnabled = (a:0 ? exists('g:' . a:marksVariable) : (exists('g:MARK_ENABLED') ? g:MARK_ENABLED : 1))
 
-		let l:marks = ingo#plugin#persistence#Load(l:marksVariable, [])
+		let l:marks = ingo#plugin#persistence#Load(a:marksVariable, [])
 		if empty(l:marks)
-			call ingo#err#Set('No marks stored under ' . l:marksVariable . (ingo#plugin#persistence#CanPersist(l:marksVariable) ? '' : ', and persistence not configured; cp. :help mark-persistence'))
+			call ingo#err#Set('No marks stored under ' . a:marksVariable . (ingo#plugin#persistence#CanPersist(a:marksVariable) ? '' : ', and persistence not configured; cp. :help mark-persistence'))
 			return 0
 		endif
 
@@ -863,7 +862,7 @@ function! mark#LoadCommand( isShowMessages, ... )
 
 		if a:isShowMessages
 			if l:loadedMarkNum == 0
-				echomsg 'No persistent marks defined in ' . l:marksVariable
+				echomsg 'No persistent marks defined in ' . a:marksVariable
 			else
 				echomsg printf('Loaded %d mark%s', l:loadedMarkNum, (l:loadedMarkNum == 1 ? '' : 's')) . (s:enabled ? '' : '; marks currently disabled')
 			endif
@@ -872,12 +871,12 @@ function! mark#LoadCommand( isShowMessages, ... )
 		return 1
 	catch /^Load:/
 		if a:0
-			call ingo#err#Set(printf('Corrupted persistent mark info in g:%s', l:marksVariable))
+			call ingo#err#Set(printf('Corrupted persistent mark info in g:%s', a:marksVariable))
 		else
-			call ingo#err#Set(printf('Corrupted persistent mark info in g:%s and g:MARK_ENABLED', l:marksVariable))
+			call ingo#err#Set(printf('Corrupted persistent mark info in g:%s and g:MARK_ENABLED', a:marksVariable))
 			unlet! g:MARK_ENABLED
 		endif
-		execute 'unlet! g:' . l:marksVariable
+		execute 'unlet! g:' . a:marksVariable
 		return 0
 	endtry
 endfunction
@@ -1156,7 +1155,7 @@ endfunction
 call mark#Init()
 if exists('g:mwDoDeferredLoad') && g:mwDoDeferredLoad
 	unlet g:mwDoDeferredLoad
-	call mark#LoadCommand(0)
+	call mark#LoadCommand(0, mark#early#GetMarksVariable())
 else
 	call mark#UpdateScope()
 endif

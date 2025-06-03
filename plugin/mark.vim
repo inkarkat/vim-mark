@@ -139,7 +139,7 @@ if g:mwAutoLoadMarks
 			if ! exists('g:MARK_ENABLED') || g:MARK_ENABLED
 				" There are persistent marks and they haven't been disabled; we need to
 				" show them right now.
-				call mark#LoadCommand(0)
+				call mark#LoadCommand(0, a:marksVariable)
 			else
 				" Though there are persistent marks, they have been disabled. We avoid
 				" sourcing the autoload script and its invasive autocmds right now;
@@ -170,7 +170,7 @@ endif
 command! -bar MarkClear call mark#ClearAll()
 command! -bar Marks call mark#List()
 
-command! -bar -nargs=? -complete=customlist,mark#MarksVariablesComplete MarkLoad if ! mark#LoadCommand(1, <f-args>) | echoerr ingo#err#Get() | endif
+command! -bar -nargs=? -complete=customlist,mark#MarksVariablesComplete MarkLoad if ! mark#LoadCommand(1, mark#early#GetMarksVariable(<f-args>)) | echoerr ingo#err#Get() | endif
 command! -bar -nargs=? -complete=customlist,mark#MarksVariablesComplete MarkSave if ! mark#SaveCommand(<f-args>) | echoerr ingo#err#Get() | endif
 command! -bar -register MarkYankDefinitions         if ! mark#YankDefinitions(0, <q-reg>) | echoerr ingo#err#Get()| endif
 command! -bar -register MarkYankDefinitionsOneLiner if ! mark#YankDefinitions(1, <q-reg>) | echoerr ingo#err#Get()| endif
