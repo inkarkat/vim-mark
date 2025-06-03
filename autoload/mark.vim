@@ -1,7 +1,7 @@
 " Script Name: mark.vim
 " Description: Highlight several words in different colors simultaneously.
 "
-" Copyright:   (C) 2008-2024 Ingo Karkat
+" Copyright:   (C) 2008-2025 Ingo Karkat
 "              (C) 2005-2008 Yuheng Xie
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
@@ -858,7 +858,7 @@ function! mark#LoadCommand( isShowMessages, ... )
 
 		let l:marks = ingo#plugin#persistence#Load(l:marksVariable, [])
 		if empty(l:marks)
-			call ingo#err#Set('No marks stored under ' . l:marksVariable . (ingo#plugin#persistence#CanPersist(l:marksVariable) ? '' : ", and persistence not configured via ! flag in 'viminfo'"))
+			call ingo#err#Set('No marks stored under ' . l:marksVariable . (ingo#plugin#persistence#CanPersist(l:marksVariable) ? '' : ', and persistence not configured; cp. :help mark-persistence'))
 			return 0
 		endif
 
@@ -901,10 +901,10 @@ endfunction
 function! mark#SaveCommand( ... )
 	if ! ingo#plugin#persistence#CanPersist()
 		if ! a:0
-			call ingo#err#Set("Cannot persist marks, need ! flag in 'viminfo': :set viminfo+=!")
+			call ingo#err#Set('Cannot persist marks; cp. :help mark-persistence')
 			return 0
 		elseif a:1 =~# '^\L\+$'
-			call ingo#msg#WarningMsg("Cannot persist marks, need ! flag in 'viminfo': :set viminfo+=!")
+			call ingo#msg#WarningMsg('Cannot persist marks; cp. :help mark-persistence')
 		endif
 	endif
 
