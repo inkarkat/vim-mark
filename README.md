@@ -227,7 +227,12 @@ USAGE
         set sessionoptions+=globals " Save and restore global variables.
     If you've configured the session-files but not viminfo, :MarkLoad and
     :MarkSave will default to a slot name that works with session files, i.e.
-    g:MARK_marks, instead of g:MARK_MARKS.
+    the variable g:MARK_marks, instead of g:MARK_MARKS. Alternatively, if you've
+    configured both but want to explicitly persist the marks into the session file
+    and have it restored when that session is loaded, use
+        :MarkSave marks
+    and either set g:mwAutoLoadMarks (automatic restore on session load) or use
+        :MarkLoad marks
 
     :MarkLoad               Restore the marks from the previous Vim session. All
                             current marks are discarded.

@@ -152,7 +152,8 @@ if g:mwAutoLoadMarks
 	endfunction
 
 	augroup MarkInitialization
-		autocmd! VimEnter * call <SID>AutoLoadMarks(mark#early#GetMarksVariable())
+		autocmd! VimEnter        * call <SID>AutoLoadMarks(mark#early#GetMarksVariable())
+		autocmd! SessionLoadPost * call <SID>AutoLoadMarks('MARK_marks')
 	augroup END
 endif
 
