@@ -846,15 +846,11 @@ endfunction
 function! mark#MarksVariablesComplete( ArgLead, CmdLine, CursorPos )
 	return sort(map(filter(keys(g:), 'v:val !~# "^MARK_\\%(MARKS\\|ENABLED\\)$" && v:val =~# "\\V\\^MARK_' . (empty(a:ArgLead) ? '\\S' : escape(a:ArgLead, '\')) . '"'), 'v:val[5:]'))
 endfunction
-" Duplicated to +/function!\ s:GetMarksVariable/ ../plugin/mark.vim
-function! s:GetMarksVariable( ... )
-	return printf('MARK_%s', (a:0 ? a:1 : (ingo#plugin#persistence#CanPersist() == 2 ? 'marks': 'MARKS')))  " DWIM: Default to g:MARK_marks if only persistence for :mksession is configured
-endfunction
 
 " :MarkLoad command.
 function! mark#LoadCommand( isShowMessages, ... )
 	try
-		let l:marksVariable = call('s:GetMarksVariable', a:000)
+		let l:marksVariable = call('mark#early#GetMarksVariable', a:000)
 		let l:isEnabled = (a:0 ? exists('g:' . l:marksVariable) : (exists('g:MARK_ENABLED') ? g:MARK_ENABLED : 1))
 
 		let l:marks = ingo#plugin#persistence#Load(l:marksVariable, [])
@@ -890,7 +886,7 @@ endfunction
 function! s:SavePattern( ... )
 	let l:savedMarks = mark#ToList()
 
-	let l:marksVariable = call('s:GetMarksVariable', a:000)
+	let l:marksVariable = call('mark#early#GetMarksVariable', a:000)
 	call ingo#plugin#persistence#Store(l:marksVariable, l:savedMarks)
 	if ! a:0
 		let g:MARK_ENABLED = s:enabled

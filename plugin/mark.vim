@@ -132,13 +132,8 @@ if g:mwAutoLoadMarks
 	" As the viminfo is only processed after sourcing of the runtime files, the
 	" persistent global variables are not yet available here. Defer this until Vim
 	" startup has completed.
-	" Duplicated to +/function!\ s:GetMarksVariable/ ../autoload/mark.vim
-	function! s:GetMarksVariable( ... )
-		return printf('MARK_%s', (a:0 ? a:1 : (ingo#plugin#persistence#CanPersist() == 2 ? 'marks': 'MARKS')))  " DWIM: Default to g:MARK_marks if only persistence for :mksession is configured
-	endfunction
-	function! s:AutoLoadMarks()
-		let l:marksVariable = s:GetMarksVariable()
-		if g:mwAutoLoadMarks && exists('g:' . l:marksVariable) && ! empty(ingo#plugin#persistence#Load(l:marksVariable, []))
+	function! s:AutoLoadMarks( marksVariable )
+		if g:mwAutoLoadMarks && exists('g:' . a:marksVariable) && ! empty(ingo#plugin#persistence#Load(a:marksVariable, []))
 			" Note: Avoid triggering the autoload unless there actually are persistent
 			" marks.
 			if ! exists('g:MARK_ENABLED') || g:MARK_ENABLED
@@ -157,7 +152,7 @@ if g:mwAutoLoadMarks
 	endfunction
 
 	augroup MarkInitialization
-		autocmd! VimEnter * call <SID>AutoLoadMarks()
+		autocmd! VimEnter * call <SID>AutoLoadMarks(mark#early#GetMarksVariable())
 	augroup END
 endif
 
