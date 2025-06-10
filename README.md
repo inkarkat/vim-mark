@@ -619,7 +619,7 @@ https://github.com/inkarkat/vim-mark/issues or email (address below).
 HISTORY
 ------------------------------------------------------------------------------
 
-##### 3.4.0   RELEASEME
+##### 3.4.0   10-Jun-2025
 - ENH: Support mark persistence to sessions created via :mksession, too.
 
 __You need to update to ingo-library ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)) version 1.047!__
