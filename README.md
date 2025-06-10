@@ -74,6 +74,8 @@ plugin offers the following advantages over the original:
 - vim-highlight-hero ([vimscript #5922](http://www.vim.org/scripts/script.php?script_id=5922)) can also highlight the current word or
   selection, has some flexibility with regard to whitespace matching, is
   limited to the current window.
+- high-str (https://github.com/Pocco81/high-str.nvim) is a Neovim-only plugin
+  that can highlight the visual selection in multiple, configurable colors.
 
 USAGE
 ------------------------------------------------------------------------------
@@ -223,6 +225,16 @@ USAGE
     The marks can be kept and restored across Vim sessions, using the viminfo
     file. For this to work, the "!" flag must be part of the 'viminfo' setting:
         set viminfo^=!  " Save and restore global variables.
+    Marks can also be stored in |session-file|s with this setting:
+        set sessionoptions+=globals " Save and restore global variables.
+    If you've configured the session-files but not viminfo, :MarkLoad and
+    :MarkSave will default to a slot name that works with session files, i.e.
+    the variable g:MARK_marks, instead of g:MARK_MARKS. Alternatively, if you've
+    configured both but want to explicitly persist the marks into the session file
+    and have it restored when that session is loaded, use
+        :MarkSave marks
+    and either set g:mwAutoLoadMarks (automatic restore on session load) or use
+        :MarkLoad marks
 
     :MarkLoad               Restore the marks from the previous Vim session. All
                             current marks are discarded.
@@ -238,16 +250,22 @@ USAGE
                             persist without closing Vim, use :wviminfo; an
                             already running Vim session can import marks via
                             :rviminfo followed by :MarkLoad).
-                            If {slot} contains lowercase letters, you can just
-                            recall within the current session. When no marks are
-                            currently defined, the {slot} is cleared.
+                            If {slot} contains at least one lowercase letter, the
+                            marks are persisted to any user sessions created by
+                            :mksession.
+                            If variable persistence isn't configured or the above
+                            conditions for {slot} aren't met (e.g. when using
+                            numbered slots), you can just recall within the
+                            current session.
+                            When no marks are currently defined, the {slot} is
+                            cleared.
 
     By default, automatic persistence is enabled (so you don't need to explicitly
     :MarkSave), but you have to explicitly load the persisted marks in a new Vim
     session via :MarkLoad, to avoid that you accidentally drag along outdated
     highlightings from Vim session to session, and be surprised by the arbitrary
-    highlight groups and occasional appearance of forgotten marks. If you want
-    just that though and automatically restore any marks, set g:mwAutoLoadMarks.
+    highlight groups and occasional appearance of forgotten marks. If you want to
+    automatically restore any marks, set g:mwAutoLoadMarks.
 
     You can also initialize some marks (even using particular highlight groups) to
     static values, e.g. by including this in vimrc:
@@ -471,7 +489,8 @@ would like to change their relative priorities. The default is negative to
 step back behind the default search highlighting.
 
 If you want no or only a few of the available mappings, you can completely
-turn off the creation of the default mappings by defining:
+turn off the creation of the default mappings by defining (before the plugin
+is loaded):
 
     :let g:mw_no_mappings = 1
 
@@ -599,6 +618,11 @@ https://github.com/inkarkat/vim-mark/issues or email (address below).
 
 HISTORY
 ------------------------------------------------------------------------------
+
+##### 3.4.0   10-Jun-2025
+- ENH: Support mark persistence to sessions created via :mksession, too.
+
+__You need to update to ingo-library ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)) version 1.047!__
 
 ##### 3.3.0   17-Jan-2025
 - Expose mark#mark#AnyMarkPattern().

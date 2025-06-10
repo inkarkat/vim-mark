@@ -1,5 +1,6 @@
 autoload/mark.vim
 autoload/mark/cascade.vim
+autoload/mark/early.vim
 autoload/mark/palettes.vim
 plugin/mark.vim
 doc/mark.txt
