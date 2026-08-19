@@ -2,11 +2,11 @@
 "
 " DEPENDENCIES:
 "
-" Copyright: (C) 2012-2019 Ingo Karkat
+" Copyright: (C) 2012-2026 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
-" Contributors: rockybalboa4
+" Contributors: rockybalboa4, sfinktah
 "
 " Version:     3.1.0
 
@@ -180,6 +180,66 @@ function! mark#palettes#Maximum()
 		\]
 		endif
 	return l:palette
+endfunction
+
+function! mark#palettes#FiftyFive()
+	return [
+		\   { 'ctermbg':'31',  'ctermfg':'Black', 'guibg':'#8CCBEA', 'guifg':'Black' },
+		\   { 'ctermbg':'35',  'ctermfg':'Black', 'guibg':'#A4E57E', 'guifg':'Black' },
+		\   { 'ctermbg':'39',  'ctermfg':'Black', 'guibg':'#FFDB72', 'guifg':'Black' },
+		\   { 'ctermbg':'43',  'ctermfg':'Black', 'guibg':'#FF7272', 'guifg':'Black' },
+		\   { 'ctermbg':'47',  'ctermfg':'Black', 'guibg':'#FFB3FF', 'guifg':'Black' },
+		\   { 'ctermbg':'51',  'ctermfg':'Black', 'guibg':'#9999FF', 'guifg':'Black' },
+		\   { 'ctermbg':'55',  'ctermfg':'Black', 'guibg':'#ff4848', 'guifg':'Black' },
+		\   { 'ctermbg':'59',  'ctermfg':'White', 'guibg':'#ae202c', 'guifg':'White' },
+		\   { 'ctermbg':'63',  'ctermfg':'Black', 'guibg':'#eed3d5', 'guifg':'Black' },
+		\   { 'ctermbg':'119', 'ctermfg':'White', 'guibg':'#20ae2c', 'guifg':'White' },
+		\   { 'ctermbg':'195', 'ctermfg':'Black', 'guibg':'#72FFF2', 'guifg':'Black' },
+		\   { 'ctermbg':'175', 'ctermfg':'Black', 'guibg':'#79f694', 'guifg':'Black' },
+		\   { 'ctermbg':'163', 'ctermfg':'Black', 'guibg':'#FFFFB3', 'guifg':'Black' },
+		\   { 'ctermbg':'235', 'ctermfg':'Black', 'guibg':'#ffd599', 'guifg':'Black' },
+		\   { 'ctermbg':'143', 'ctermfg':'Black', 'guibg':'#91f3c7', 'guifg':'Black' },
+		\   { 'ctermbg':'147', 'ctermfg':'Black', 'guibg':'#F2FF72', 'guifg':'Black' },
+		\   { 'ctermbg':'139', 'ctermfg':'Black', 'guibg':'#ffd6fd', 'guifg':'Black' },
+		\   { 'ctermbg':'223', 'ctermfg':'Black', 'guibg':'#d5d3ee', 'guifg':'Black' },
+		\   { 'ctermbg':'83',  'ctermfg':'Black', 'guibg':'#f391c7', 'guifg':'Black' },
+		\   { 'ctermbg':'95',  'ctermfg':'Black', 'guibg':'#CB8CEA', 'guifg':'Black' },
+		\   { 'ctermbg':'91',  'ctermfg':'Black', 'guibg':'#888888', 'guifg':'Black' },
+		\   { 'ctermbg':'159', 'ctermfg':'Black', 'guibg':'#72FFDB', 'guifg':'Black' },
+		\   { 'ctermbg':'71',  'ctermfg':'Black', 'guibg':'#ffdb99', 'guifg':'Black' },
+		\   { 'ctermbg':'67',  'ctermfg':'Black', 'guibg':'#f69479', 'guifg':'Black' },
+		\   { 'ctermbg':'151', 'ctermfg':'Black', 'guibg':'#EA8CCB', 'guifg':'Black' },
+		\   { 'ctermbg':'135', 'ctermfg':'Black', 'guibg':'#d599ff', 'guifg':'Black' },
+		\   { 'ctermbg':'239', 'ctermfg':'Black', 'guibg':'#fdffd6', 'guifg':'Black' },
+		\   { 'ctermbg':'107', 'ctermfg':'Black', 'guibg':'#72FF72', 'guifg':'Black' },
+		\   { 'ctermbg':'155', 'ctermfg':'Black', 'guibg':'#7EA4E5', 'guifg':'Black' },
+		\   { 'ctermbg':'99',  'ctermfg':'Black', 'guibg':'#E5A47E', 'guifg':'Black' },
+		\   { 'ctermbg':'179', 'ctermfg':'Black', 'guibg':'#99ffdb', 'guifg':'Black' },
+		\   { 'ctermbg':'127', 'ctermfg':'Black', 'guibg':'#94f679', 'guifg':'Black' },
+		\   { 'ctermbg':'211', 'ctermfg':'Black', 'guibg':'#7272FF', 'guifg':'Black' },
+		\   { 'ctermbg':'199', 'ctermfg':'Black', 'guibg':'#EACB8C', 'guifg':'Black' },
+		\   { 'ctermbg':'187', 'ctermfg':'Black', 'guibg':'#fdd6ff', 'guifg':'Black' },
+		\   { 'ctermbg':'171', 'ctermfg':'Black', 'guibg':'#d5eed3', 'guifg':'Black' },
+		\   { 'ctermbg':'231', 'ctermfg':'Black', 'guibg':'#99dbff', 'guifg':'Black' },
+		\   { 'ctermbg':'75',  'ctermfg':'Black', 'guibg':'#99d5ff', 'guifg':'Black' },
+		\   { 'ctermbg':'247', 'ctermfg':'Black', 'guibg':'#72F2FF', 'guifg':'Black' },
+		\   { 'ctermbg':'191', 'ctermfg':'Black', 'guibg':'#c7f391', 'guifg':'Black' },
+		\   { 'ctermbg':'215', 'ctermfg':'White', 'guibg':'#4848ff', 'guifg':'White' },
+		\   { 'ctermbg':'167', 'ctermfg':'White', 'guibg':'#2cae20', 'guifg':'White' },
+		\   { 'ctermbg':'219', 'ctermfg':'White', 'guibg':'#2c20ae', 'guifg':'White' },
+		\   { 'ctermbg':'183', 'ctermfg':'Black', 'guibg':'#ff99d5', 'guifg':'Black' },
+		\   { 'ctermbg':'203', 'ctermfg':'Black', 'guibg':'#7EE5A4', 'guifg':'Black' },
+		\   { 'ctermbg':'207', 'ctermfg':'Black', 'guibg':'#72DBFF', 'guifg':'Black' },
+		\   { 'ctermbg':'243', 'ctermfg':'Black', 'guibg':'#c791f3', 'guifg':'Black' },
+		\   { 'ctermbg':'227', 'ctermfg':'Black', 'guibg':'#7994f6', 'guifg':'Black' },
+		\   { 'ctermbg':'103', 'ctermfg':'Black', 'guibg':'#DBFF72', 'guifg':'Black' },
+		\   { 'ctermbg':'79',  'ctermfg':'Black', 'guibg':'#d6fffd', 'guifg':'Black' },
+		\   { 'ctermbg':'123', 'ctermfg':'Black', 'guibg':'#d3eed5', 'guifg':'Black' },
+		\   { 'ctermbg':'111', 'ctermfg':'Black', 'guibg':'#B3FFFF', 'guifg':'Black' },
+		\   { 'ctermbg':'87',  'ctermfg':'Black', 'guibg':'#FFF272', 'guifg':'Black' },
+		\   { 'ctermbg':'131', 'ctermfg':'Black', 'guibg':'#dbff99', 'guifg':'Black' },
+		\   { 'ctermbg':'115', 'ctermfg':'Black', 'guibg':'#48ff48', 'guifg':'Black' },
+		\]
 endfunction
 
 " vim: ts=4 sts=0 sw=4 noet
