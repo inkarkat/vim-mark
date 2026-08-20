@@ -326,11 +326,7 @@ function! mark#palettes#Rainbow()
 	if ! has('gui_running')
 		call filter(l:palette, 'v:val.co <= &t_Co')
 	endif
-	return map(l:palette, 's:UnletCo(v:val)')
-endfunction
-function! s:UnletCo( val ) abort
-	unlet! a:val.co
-	return a:val
+	return map(l:palette, 'ingo#dict#Unlet(v:val, "co")')
 endfunction
 
 " vim: ts=4 sts=0 sw=4 noet

@@ -42,7 +42,7 @@ plugin offers the following advantages over the original:
 - MultipleSearch ([vimscript #479](http://www.vim.org/scripts/script.php?script_id=479)) can highlight in a single window and in all
   buffers, but still relies on the :syntax highlighting method, which is
   slower and less reliable.
-- http://vim.wikia.com/wiki/Highlight\_multiple\_words offers control over the
+- http://vim.wikia.com/wiki/Highlight_multiple_words offers control over the
   color used by mapping the 1-9 keys on the numeric keypad, persistence, and
   highlights only a single window.
 - highlight.vim ([vimscript #1599](http://www.vim.org/scripts/script.php?script_id=1599)) highlights lines or patterns of interest in
@@ -347,7 +347,7 @@ To uninstall, use the :RmVimball command.
 ### DEPENDENCIES
 
 - Requires Vim 7.1 with matchadd(), or Vim 7.2 or higher.
-- Requires the ingo-library.vim plugin ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)), version 1.046 or
+- Requires the ingo-library.vim plugin ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)), version 1.049 or
   higher.
 
 CONFIGURATION
@@ -623,6 +623,8 @@ HISTORY
 - ENH: Add "55colors" palette contributed by Christopher Anderson.
 - ENH: Add "rainbow" palette, using the colors of the "maximum" palette, but
   ordered by rainbow colors and meandering saturation / brightness.
+
+__You need to update to ingo-library ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)) version 1.049!__
 
 ##### 3.4.0   10-Jun-2025
 - ENH: Support mark persistence to sessions created via :mksession, too.
