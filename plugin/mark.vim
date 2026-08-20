@@ -1,7 +1,7 @@
 " Script Name: mark.vim
 " Description: Highlight several words in different colors simultaneously.
 "
-" Copyright:   (C) 2008-2025 Ingo Karkat
+" Copyright:   (C) 2008-2026 Ingo Karkat
 "              (C) 2005-2008 Yuheng Xie
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
@@ -54,7 +54,8 @@ if ! exists('g:mwPalettes')
 		\   { 'ctermbg':'Blue',       'ctermfg':'Black', 'guibg':'#9999FF', 'guifg':'Black' },
 		\],
 	\	'extended': function('mark#palettes#Extended'),
-	\	'maximum': function('mark#palettes#Maximum')
+	\	'maximum': function('mark#palettes#Maximum'),
+	\	'55colors': function('mark#palettes#FiftyFive'),
 	\}
 	if has('gui_running')
 		call extend(g:mwPalettes, {
