@@ -8,7 +8,7 @@
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 " Contributors: rockybalboa4, sfinktah
 "
-" Version:     3.1.0
+" Version:     3.4.0
 
 function! mark#palettes#Extended()
 	return [

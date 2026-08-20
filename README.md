@@ -42,7 +42,7 @@ plugin offers the following advantages over the original:
 - MultipleSearch ([vimscript #479](http://www.vim.org/scripts/script.php?script_id=479)) can highlight in a single window and in all
   buffers, but still relies on the :syntax highlighting method, which is
   slower and less reliable.
-- http://vim.wikia.com/wiki/Highlight_multiple_words offers control over the
+- http://vim.wikia.com/wiki/Highlight\_multiple\_words offers control over the
   color used by mapping the 1-9 keys on the numeric keypad, persistence, and
   highlights only a single window.
 - highlight.vim ([vimscript #1599](http://www.vim.org/scripts/script.php?script_id=1599)) highlights lines or patterns of interest in
@@ -621,6 +621,7 @@ HISTORY
 
 ##### 3.4.0   10-Jun-2025
 - ENH: Support mark persistence to sessions created via :mksession, too.
+- ENH: Add "55colors" palette contributed by Christopher Anderson.
 
 __You need to update to ingo-library ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)) version 1.047!__
 
@@ -973,7 +974,7 @@ __PLEASE UPDATE THE
 - Initial version published by Yuheng Xie on vim.org.
 
 ------------------------------------------------------------------------------
-Copyright: (C) 2008-2025 Ingo Karkat -
+Copyright: (C) 2008-2026 Ingo Karkat -
            (C) 2005-2008 Yuheng Xie -
 The [VIM LICENSE](http://vimdoc.sourceforge.net/htmldoc/uganda.html#license) applies to this plugin.
 
