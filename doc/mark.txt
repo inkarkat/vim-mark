@@ -609,6 +609,8 @@ HISTORY								*mark-history*
 
 3.4.1	RELEASEME
 - ENH: Add "55colors" palette contributed by Christopher Anderson.
+- ENH: Add "rainbow" palette, using the colors of the "maximum" palette, but
+  ordered by rainbow colors and meandering saturation / brightness.
 
 3.4.0	10-Jun-2025
 - ENH: Support mark persistence to sessions created via :mksession, too.

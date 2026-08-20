@@ -242,4 +242,95 @@ function! mark#palettes#FiftyFive()
 		\]
 endfunction
 
+function! mark#palettes#Rainbow()
+		let l:palette = [
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'52',    'guifg':'White',   'guibg':'#5f0000' },
+		\   { 'co': 256,    'ctermfg':'White',      'ctermbg':'160',   'guifg':'White',   'guibg':'#d70000' },
+		\   { 'co': 16,     'ctermbg':'Red',        'ctermfg':'Black', 'guibg':'#ff7272', 'guifg':'Black' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#fcb9b1' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'224',   'guifg':'Black',   'guibg':'#ffd7d7' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'202',   'guifg':'Black',   'guibg':'#ff5f00' },
+		\   { 'co': 256,    'ctermfg':'White',      'ctermbg':'130',   'guifg':'White',   'guibg':'#af5f00' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'166',   'guifg':'Black',   'guibg':'#d75f00' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'209',   'guifg':'Black',   'guibg':'#ff875f' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#f7af83' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'215',   'guifg':'Black',   'guibg':'#ffaf5f' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#ffcc73' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'220',   'guifg':'Black',   'guibg':'#ffd700' },
+		\   { 'co': 16,     'ctermbg':'Yellow',     'ctermfg':'Black', 'guibg':'#ffdb72', 'guifg':'Black' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#f2e19d' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'186',   'guifg':'Black',   'guibg':'#d7d787' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'101',   'guifg':'Black',   'guibg':'#87875f' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'58',    'guifg':'White',   'guibg':'#5f5f00' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'142',   'guifg':'Black',   'guibg':'#afaf00' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'228',   'guifg':'Black',   'guibg':'#ffff87' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#e7ff8c' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'190',   'guifg':'Black',   'guibg':'#d7ff00' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'118',   'guifg':'Black',   'guibg':'#87ff00' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#bcff80' },
+		\   { 'co': 16,     'ctermbg':'Green',      'ctermfg':'Black', 'guibg':'#a4e57e', 'guifg':'Black' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#a2de9e' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'34',    'guifg':'White',   'guibg':'#00af00' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'22',    'guifg':'White',   'guibg':'#005f00' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'64',    'guifg':'White',   'guibg':'#5f8700' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'107',   'guifg':'Black',   'guibg':'#87af5f' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'114',   'guifg':'Black',   'guibg':'#87d787' },
+		\   { 'co': 88,     'ctermfg':'Black',      'ctermbg':'78',    'guifg':'Black',   'guibg':'#5fd787' },
+		\   { 'co': 88,     'ctermfg':'Black',      'ctermbg':'47',    'guifg':'Black',   'guibg':'#00ff5f' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'65',    'guifg':'White',   'guibg':'#5f875f' },
+		\   { 'co': 88,     'ctermfg':'Black',      'ctermbg':'66',    'guifg':'Black',   'guibg':'#5f8787' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'29',    'guifg':'White',   'guibg':'#00875f' },
+		\   { 'co': 88,     'ctermfg':'Black',      'ctermbg':'72',    'guifg':'Black',   'guibg':'#5faf87' },
+		\   { 'co': 88,     'ctermfg':'Black',      'ctermbg':'85',    'guifg':'Black',   'guibg':'#5fffaf' },
+		\   { 'co': 88,     'ctermfg':'Black',      'ctermbg':'43',    'guifg':'Black',   'guibg':'#00d7af' },
+		\   { 'co': 88,     'ctermfg':'Black',      'ctermbg':'79',    'guifg':'Black',   'guibg':'#5fd7af' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'122',   'guifg':'Black',   'guibg':'#87ffd7' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#a6ffd2' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#7afff0' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'23',    'guifg':'White',   'guibg':'#005f5f' },
+		\   { 'co': 88,     'ctermfg':'Black',      'ctermbg':'37',    'guifg':'Black',   'guibg':'#00afaf' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'152',   'guifg':'Black',   'guibg':'#afd7d7' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#99cbd6' },
+		\   { 'co': 16,     'ctermbg':'Cyan',       'ctermfg':'Black', 'guibg':'#8ccbea', 'guifg':'Black' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#70b9fa' },
+		\   { 'co': 88,     'ctermfg':'Black',      'ctermbg':'74',    'guifg':'Black',   'guibg':'#5fafd7' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#b3dcff' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'117',   'guifg':'Black',   'guibg':'#87d7ff' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#8caeff' },
+		\   { 'co': 16,     'ctermbg':'Blue',       'ctermfg':'Black', 'guibg':'#9999ff', 'guifg':'Black' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'27',    'guifg':'White',   'guibg':'#005fff' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'17',    'guifg':'White',   'guibg':'#00005f' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#6a6feb' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#ac98eb' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'60',    'guifg':'White',   'guibg':'#5f5f87' },
+		\   { 'co': 88,     'ctermfg':'White',      'ctermbg':'53',    'guifg':'White',   'guibg':'#5f005f' },
+		\   { 'co': 256,    'ctermfg':'White',      'ctermbg':'90',    'guifg':'White',   'guibg':'#870087' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'133',   'guifg':'Black',   'guibg':'#af5faf' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#c8a3d9' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#fc97ef' },
+		\   { 'co': 16,     'ctermbg':'Magenta',    'ctermfg':'Black', 'guibg':'#ffb3ff', 'guifg':'Black' },
+		\   { 'co': 256,    'ctermfg':'White',      'ctermbg':'198',   'guifg':'White',   'guibg':'#ff0087' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'169',   'guifg':'Black',   'guibg':'#d75faf' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'204',   'guifg':'Black',   'guibg':'#ff5f87' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#ff73bb' },
+		\   { 'co': 16777216,                                          'guifg':'Black',   'guibg':'#ff8092' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'212',   'guifg':'Black',   'guibg':'#ff87d7' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'175',   'guifg':'Black',   'guibg':'#d787af' },
+		\   { 'co': 256,    'ctermfg':'White',      'ctermbg':'96',    'guifg':'White',   'guibg':'#875f87' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'138',   'guifg':'Black',   'guibg':'#af8787' },
+		\   { 'co': 256,    'ctermfg':'Black',      'ctermbg':'174',   'guifg':'Black',   'guibg':'#d78787' },
+		\   { 'co': 256,    'ctermfg':'White',      'ctermbg':'95',    'guifg':'White',   'guibg':'#875f5f' },
+		\   { 'co': 256,    'ctermfg':'White',      'ctermbg':'131',   'guifg':'White',   'guibg':'#af5f5f' },
+		\]
+
+	if ! has('gui_running')
+		call filter(l:palette, 'v:val.co <= &t_Co')
+	endif
+	return map(l:palette, 's:UnletCo(v:val)')
+endfunction
+function! s:UnletCo( val ) abort
+	unlet! a:val.co
+	return a:val
+endfunction
+
 " vim: ts=4 sts=0 sw=4 noet
