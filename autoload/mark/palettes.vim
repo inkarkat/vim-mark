@@ -89,12 +89,12 @@ endfunction
 
 function! mark#palettes#Maximum()
 		let l:palette = [
-		\   { 'ctermbg':'Cyan',       'ctermfg':'Black', 'guibg':'#8CCBEA', 'guifg':'Black' },
-		\   { 'ctermbg':'Green',      'ctermfg':'Black', 'guibg':'#A4E57E', 'guifg':'Black' },
-		\   { 'ctermbg':'Yellow',     'ctermfg':'Black', 'guibg':'#FFDB72', 'guifg':'Black' },
-		\   { 'ctermbg':'Red',        'ctermfg':'Black', 'guibg':'#FF7272', 'guifg':'Black' },
-		\   { 'ctermbg':'Magenta',    'ctermfg':'Black', 'guibg':'#FFB3FF', 'guifg':'Black' },
-		\   { 'ctermbg':'Blue',       'ctermfg':'Black', 'guibg':'#9999FF', 'guifg':'Black' },
+		\   { 'ctermbg':'Cyan',       'ctermfg':'Black', 'guibg':'#8ccbea', 'guifg':'Black' },
+		\   { 'ctermbg':'Green',      'ctermfg':'Black', 'guibg':'#a4e57e', 'guifg':'Black' },
+		\   { 'ctermbg':'Yellow',     'ctermfg':'Black', 'guibg':'#ffdb72', 'guifg':'Black' },
+		\   { 'ctermbg':'Red',        'ctermfg':'Black', 'guibg':'#ff7272', 'guifg':'Black' },
+		\   { 'ctermbg':'Magenta',    'ctermfg':'Black', 'guibg':'#ffb3ff', 'guifg':'Black' },
+		\   { 'ctermbg':'Blue',       'ctermfg':'Black', 'guibg':'#9999ff', 'guifg':'Black' },
 		\]
 		if has('gui_running') || &t_Co >= 88
 		let l:palette += [
