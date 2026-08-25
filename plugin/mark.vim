@@ -250,8 +250,9 @@ function! s:MakeDirectGroupMappings( isDefineDefaultMappings )
 		for [l:isBackward, l:direction, l:keyModifier] in [[0, 'Next', ''], [1, 'Prev', 'C-']]
 			let l:plugMappingName = printf('<Plug>MarkSearchGroup%d%s', l:cnt, l:direction)
 			execute printf('nnoremap <silent> %s :<C-u>if ! mark#SearchGroupMark(%d, v:count1, %d, 1)<Bar>execute "normal! \<lt>C-\>\<lt>C-n>\<lt>Esc>"<Bar>echoerr ingo#err#Get()<Bar>endif<CR>', l:plugMappingName, l:cnt, l:isBackward)
-			if a:isDefineDefaultMappings && ! hasmapto(l:plugMappingName, 'n')
-				execute printf('nmap <%sk%d> %s', l:keyModifier, l:cnt, l:plugMappingName)
+			let l:defaultMapping = printf('<%sk%d>', l:keyModifier, l:cnt)
+			if a:isDefineDefaultMappings && ! hasmapto(l:plugMappingName, 'n') && empty(maparg(l:defaultMapping, 'n'))
+				execute printf('nmap %s %s', l:defaultMapping, l:plugMappingName)
 			endif
 		endfor
 	endfor
@@ -265,46 +266,46 @@ if exists('g:mw_no_mappings')
 	finish
 endif
 
-if !hasmapto('<Plug>MarkSet', 'n')
-	nmap <unique> <Leader>m <Plug>MarkSet
+if !hasmapto('<Plug>MarkSet', 'n') && empty(maparg('<Leader>m', 'n'))
+	nmap <Leader>m <Plug>MarkSet
 endif
-if !hasmapto('<Plug>MarkPartialWord', 'n')
-	nmap <unique> <Leader>gm <Plug>MarkPartialWord
+if !hasmapto('<Plug>MarkPartialWord', 'n') && empty(maparg('<Leader>gm', 'n'))
+	nmap <Leader>gm <Plug>MarkPartialWord
 endif
-if !hasmapto('<Plug>MarkSet', 'x')
-	xmap <unique> <Leader>m <Plug>MarkSet
+if !hasmapto('<Plug>MarkSet', 'x') && empty(maparg('<Leader>m', 'x'))
+	xmap <Leader>m <Plug>MarkSet
 endif
 " No default mapping for <Plug>MarkIWhiteSet.
-if !hasmapto('<Plug>MarkRegex', 'n')
-	nmap <unique> <Leader>r <Plug>MarkRegex
+if !hasmapto('<Plug>MarkRegex', 'n') && empty(maparg('<Leader>r', 'n'))
+	nmap <Leader>r <Plug>MarkRegex
 endif
-if !hasmapto('<Plug>MarkRegex', 'x')
-	xmap <unique> <Leader>r <Plug>MarkRegex
+if !hasmapto('<Plug>MarkRegex', 'x') && empty(maparg('<Leader>r', 'x'))
+	xmap <Leader>r <Plug>MarkRegex
 endif
-if !hasmapto('<Plug>MarkClear', 'n')
-	nmap <unique> <Leader>n <Plug>MarkClear
+if !hasmapto('<Plug>MarkClear', 'n') && empty(maparg('<Leader>n', 'n'))
+	nmap <Leader>n <Plug>MarkClear
 endif
 " No default mapping for <Plug>MarkAllClear.
 " No default mapping for <Plug>MarkConfirmAllClear.
 " No default mapping for <Plug>MarkToggle.
 
-if !hasmapto('<Plug>MarkSearchCurrentNext', 'n')
-	nmap <unique> <Leader>* <Plug>MarkSearchCurrentNext
+if !hasmapto('<Plug>MarkSearchCurrentNext', 'n') && empty(maparg('<Leader>*', 'n'))
+	nmap <Leader>* <Plug>MarkSearchCurrentNext
 endif
-if !hasmapto('<Plug>MarkSearchCurrentPrev', 'n')
-	nmap <unique> <Leader># <Plug>MarkSearchCurrentPrev
+if !hasmapto('<Plug>MarkSearchCurrentPrev', 'n') && empty(maparg('<Leader>#', 'n'))
+	nmap <Leader># <Plug>MarkSearchCurrentPrev
 endif
-if !hasmapto('<Plug>MarkSearchAnyNext', 'n')
-	nmap <unique> <Leader>/ <Plug>MarkSearchAnyNext
+if !hasmapto('<Plug>MarkSearchAnyNext', 'n') && empty(maparg('<Leader>/', 'n'))
+	nmap <Leader>/ <Plug>MarkSearchAnyNext
 endif
-if !hasmapto('<Plug>MarkSearchAnyPrev', 'n')
-	nmap <unique> <Leader>? <Plug>MarkSearchAnyPrev
+if !hasmapto('<Plug>MarkSearchAnyPrev', 'n') && empty(maparg('<Leader>?', 'n'))
+	nmap <Leader>? <Plug>MarkSearchAnyPrev
 endif
-if !hasmapto('<Plug>MarkSearchNext', 'n')
-	nmap <unique> * <Plug>MarkSearchNext
+if !hasmapto('<Plug>MarkSearchNext', 'n') && empty(maparg('*', 'n'))
+	nmap * <Plug>MarkSearchNext
 endif
-if !hasmapto('<Plug>MarkSearchPrev', 'n')
-	nmap <unique> # <Plug>MarkSearchPrev
+if !hasmapto('<Plug>MarkSearchPrev', 'n') && empty(maparg('#', 'n'))
+	nmap # <Plug>MarkSearchPrev
 endif
 " No default mapping for <Plug>MarkSearchOrCurNext
 " No default mapping for <Plug>MarkSearchOrCurPrev
