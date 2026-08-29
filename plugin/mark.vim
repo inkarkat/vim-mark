@@ -57,6 +57,7 @@ if ! exists('g:mwPalettes')
 	\	'maximum': function('mark#palettes#Maximum'),
 	\	'55colors': function('mark#palettes#FiftyFive'),
 	\	'rainbow': function('mark#palettes#Rainbow'),
+	\	'tailwind': function('mark#palettes#Tailwind'),
 	\}
 	if has('gui_running')
 		call extend(g:mwPalettes, {
