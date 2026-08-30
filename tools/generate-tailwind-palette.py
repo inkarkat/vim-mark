@@ -134,7 +134,7 @@ def vim_entry(rgb: tuple[int, int, int], index: int, duplicate: bool) -> str:
         )
     return (
         r"\   { 'co': 256,    "
-        f"'ctermfg':'{fg}',      'ctermbg':'{index}',"
+        f"'ctermfg':'{fg}',      'ctermbg':'{index}',{' ' * (3 - len(str(index)))}"
         f"   'guifg':'{fg}',   'guibg':'{gui}' }}"
     )
 
