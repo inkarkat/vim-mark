@@ -14,7 +14,7 @@ HUES = (
     "cyan", "sky", "blue", "indigo", "violet", "purple", "fuchsia", "pink",
     "rose",
 )
-SHADES = (200, 400, 600, 800, 950)
+SHADES = (200, 400, 600, 800)
 
 COLOR_RE = re.compile(
     r"--color-([a-z]+)-(\d+):\s*oklch\("
