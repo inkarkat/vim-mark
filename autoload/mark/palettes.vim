@@ -1,6 +1,7 @@
 " mark/palettes.vim: Additional palettes for mark highlighting.
 "
 " DEPENDENCIES:
+"   - ingo-library.vim plugin
 "
 " Copyright: (C) 2012-2026 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
