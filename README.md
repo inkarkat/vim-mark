@@ -312,9 +312,9 @@ USAGE
 
 ### MARK HIGHLIGHTING PALETTES
 
-    The built-in palettes are original, extended, maximum, 55colors, rainbow,
-    and tailwind. GVIM also provides soft and softer. You can dynamically
-    toggle between them when you need more marks or different colors.
+    The built-in palettes are original, extended, maximum, 55colors, rainbow, and
+    tailwind. GVIM also provides soft and softer. You can dynamically toggle
+    between them when you need more marks or different colors.
 
     :MarkPalette {palette}  Highlight existing and future marks with the colors
                             defined in {palette}. If the new palette contains less
@@ -372,25 +372,13 @@ Or, if you have both good eyes and display, you can try a palette that defines
     let g:mwDefaultHighlightingPalette = 'maximum'
 
 The Tailwind palette provides 85 GUI / truecolor colors and 58 distinct
-xterm-256 matches:
+xterm-256 matches (that can be tweaked; cp. mark-palette-generate:
 
     let g:mwDefaultHighlightingPalette = 'tailwind'
 
 Note: This only works for built-in palettes and those that you define prior to
 running the plugin. If you extend the built-ins after plugin initialization
 (mark-palette-define), use :MarkPalette instead.
-
-#### Generating a palette
-
-The bundled generator reads Tailwind-style `@theme` CSS with OKLCH color
-definitions. Edit `HUES` and `SHADES` near the top of the script to choose the
-order, then run:
-
-    python tools/generate-tailwind-palette.py [path/to/theme.css]
-
-Copy the printed function into `autoload/mark/palettes.vim`, renaming and
-registering it if desired. The nearest xterm-256 colors and truecolor-only
-duplicate handling are generated automatically.
 
 If you like the additional colors, but don't need that many of them, restrict
 their number via:
@@ -608,6 +596,18 @@ behavior:
 
     vmap <Plug>IgnoreMarkSet <Plug>MarkSet
     xmap <Leader>m <Plug>MarkIWhiteSet
+
+### GENERATING A PALETTE
+
+The bundled generator reads Tailwind-style @theme CSS with OKLCH color
+definitions. Edit HUES and SHADES near the top of the script to choose the
+order, then run:
+
+    python tools/generate-tailwind-palette.py [path/to/theme.css]
+
+Copy the printed function into autoload/mark/palettes.vim, renaming and
+registering it if desired. The nearest xterm-256 colors and truecolor-only
+duplicate handling are generated automatically.
 
 INTEGRATION
 ------------------------------------------------------------------------------
