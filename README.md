@@ -375,11 +375,17 @@ Or, if you have both good eyes and display, you can try a palette that defines
 
     let g:mwDefaultHighlightingPalette = 'maximum'
 
-The Tailwind palette provides 85 GUI / truecolor colors and 58 distinct
-xterm-256 matches (that can be tweaked; cp. mark-palette-generate:
+The rainbow palette uses the colors of the maximum palette, but ordered by
+rainbow colors and meandering saturation / brightness:
+
+    let g:mwDefaultHighlightingPalette = 'rainbow'
+
+The Tailwind palette uses colors from https://tailwindcss.com/docs/colors
+sorted first by hue and second by saturation / brightness:
 
     let g:mwDefaultHighlightingPalette = 'tailwind'
 
+Its number and intensity of colors can be tweaked; cp. mark-palette-generate
 
 If you like the additional colors, but don't need that many of them, restrict
 their number via:
