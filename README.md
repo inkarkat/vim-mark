@@ -612,9 +612,10 @@ order, then run:
 
     python tools/generate-tailwind-palette.py [path/to/theme.css]
 
-Copy the printed function into autoload/mark/palettes.vim, renaming and
-registering it if desired. The nearest xterm-256 colors and truecolor-only
-duplicate handling are generated automatically.
+Copy the printed function into autoload/mark/palettes.vim (if you intend to
+submit a PR) or somewhere in your Vim config, renaming and registering it if
+desired. The nearest xterm-256 colors and truecolor-only duplicate handling
+are generated automatically.
 
 INTEGRATION
 ------------------------------------------------------------------------------
@@ -647,7 +648,8 @@ HISTORY
 - ENH: Add "55colors" palette contributed by Christopher Anderson.
 - ENH: Add "rainbow" palette, using the colors of the "maximum" palette, but
   ordered by rainbow colors and meandering saturation / brightness.
-- ENH: Add "tailwind" palette and a Python tool for generating OKLCH palettes.
+- ENH: Add "tailwind" palette and a Python tool for generating OKLCH palettes,
+  also contributed by Christopher Anderson.
 
 __You need to update to ingo-library ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)) version 1.049!__
 
