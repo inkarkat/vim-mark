@@ -361,6 +361,10 @@ This plugin defines 6 mark groups:
 ```
 Higher numbers always take precedence and are displayed above lower ones.
 
+Note: The following only works for built-in palettes and those that you define
+prior to running the plugin. If you extend the built-ins after plugin
+initialization (mark-palette-define), use :MarkPalette instead.
+
 Especially if you use GVIM, you can switch to a richer palette of up to 18
 colors:
 
@@ -376,9 +380,6 @@ xterm-256 matches (that can be tweaked; cp. mark-palette-generate:
 
     let g:mwDefaultHighlightingPalette = 'tailwind'
 
-Note: This only works for built-in palettes and those that you define prior to
-running the plugin. If you extend the built-ins after plugin initialization
-(mark-palette-define), use :MarkPalette instead.
 
 If you like the additional colors, but don't need that many of them, restrict
 their number via:
