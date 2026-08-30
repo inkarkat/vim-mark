@@ -4,3 +4,5 @@ autoload/mark/early.vim
 autoload/mark/palettes.vim
 plugin/mark.vim
 doc/mark.txt
+tools/generate-tailwind-palette.py
+tools/tailwind-colors.css
