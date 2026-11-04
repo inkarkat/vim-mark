@@ -627,7 +627,7 @@ https://github.com/inkarkat/vim-mark/issues or email (address below).
 ==============================================================================
 HISTORY								*mark-history*
 
-3.4.1	RELEASEME
+3.4.1	04-Nov-2026
 - ENH: Add "55colors" palette contributed by Christopher Anderson.
 - ENH: Add "rainbow" palette, using the colors of the "maximum" palette, but
   ordered by rainbow colors and meandering saturation / brightness.
