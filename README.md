@@ -312,9 +312,9 @@ USAGE
 
 ### MARK HIGHLIGHTING PALETTES
 
-    The plugin comes with three predefined palettes: original, extended, and
-    maximum. You can dynamically toggle between them, e.g. when you need more
-    marks or a different set of colors.
+    The built-in palettes are original, extended, maximum, 55colors, rainbow, and
+    tailwind. GVIM also provides soft and softer. You can dynamically toggle
+    between them when you need more marks or different colors.
 
     :MarkPalette {palette}  Highlight existing and future marks with the colors
                             defined in {palette}. If the new palette contains less
@@ -347,7 +347,7 @@ To uninstall, use the :RmVimball command.
 ### DEPENDENCIES
 
 - Requires Vim 7.1 with matchadd(), or Vim 7.2 or higher.
-- Requires the ingo-library.vim plugin ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)), version 1.046 or
+- Requires the ingo-library.vim plugin ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)), version 1.049 or
   higher.
 
 CONFIGURATION
@@ -361,6 +361,10 @@ This plugin defines 6 mark groups:
 ```
 Higher numbers always take precedence and are displayed above lower ones.
 
+Note: The following only works for built-in palettes and those that you define
+prior to running the plugin. If you extend the built-ins after plugin
+initialization (mark-palette-define), use :MarkPalette instead.
+
 Especially if you use GVIM, you can switch to a richer palette of up to 18
 colors:
 
@@ -371,9 +375,17 @@ Or, if you have both good eyes and display, you can try a palette that defines
 
     let g:mwDefaultHighlightingPalette = 'maximum'
 
-Note: This only works for built-in palettes and those that you define prior to
-running the plugin. If you extend the built-ins after plugin initialization
-(mark-palette-define), use :MarkPalette instead.
+The rainbow palette uses the colors of the maximum palette, but ordered by
+rainbow colors and meandering saturation / brightness:
+
+    let g:mwDefaultHighlightingPalette = 'rainbow'
+
+The Tailwind palette uses colors from https://tailwindcss.com/docs/colors
+sorted first by hue and second by saturation / brightness:
+
+    let g:mwDefaultHighlightingPalette = 'tailwind'
+
+Its number and intensity of colors can be tweaked; cp. mark-palette-generate
 
 If you like the additional colors, but don't need that many of them, restrict
 their number via:
@@ -592,6 +604,19 @@ behavior:
     vmap <Plug>IgnoreMarkSet <Plug>MarkSet
     xmap <Leader>m <Plug>MarkIWhiteSet
 
+### GENERATING A PALETTE
+
+The bundled generator reads Tailwind-style @theme CSS with OKLCH color
+definitions. Edit HUES and SHADES near the top of the script to choose the
+order, then run:
+
+    python tools/generate-tailwind-palette.py [path/to/theme.css]
+
+Copy the printed function into autoload/mark/palettes.vim (if you intend to
+submit a PR) or somewhere in your Vim config, renaming and registering it if
+desired. The nearest xterm-256 colors and truecolor-only duplicate handling
+are generated automatically.
+
 INTEGRATION
 ------------------------------------------------------------------------------
 
@@ -618,6 +643,15 @@ https://github.com/inkarkat/vim-mark/issues or email (address below).
 
 HISTORY
 ------------------------------------------------------------------------------
+
+##### 3.4.1   04-Nov-2026
+- ENH: Add "55colors" palette contributed by Christopher Anderson.
+- ENH: Add "rainbow" palette, using the colors of the "maximum" palette, but
+  ordered by rainbow colors and meandering saturation / brightness.
+- ENH: Add "tailwind" palette and a Python tool for generating OKLCH palettes,
+  also contributed by Christopher Anderson.
+
+__You need to update to ingo-library ([vimscript #4433](http://www.vim.org/scripts/script.php?script_id=4433)) version 1.049!__
 
 ##### 3.4.0   10-Jun-2025
 - ENH: Support mark persistence to sessions created via :mksession, too.
@@ -973,7 +1007,7 @@ __PLEASE UPDATE THE
 - Initial version published by Yuheng Xie on vim.org.
 
 ------------------------------------------------------------------------------
-Copyright: (C) 2008-2025 Ingo Karkat -
+Copyright: (C) 2008-2026 Ingo Karkat -
            (C) 2005-2008 Yuheng Xie -
 The [VIM LICENSE](http://vimdoc.sourceforge.net/htmldoc/uganda.html#license) applies to this plugin.
 
